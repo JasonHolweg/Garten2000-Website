@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f0e6d3"/>
+  <rect x="120" y="120" width="160" height="110" fill="#c9a87c" rx="6"/>
+  <rect x="140" y="80" width="40" height="50" fill="#b5865a" rx="3"/>
+  <rect x="220" y="90" width="30" height="40" fill="#b5865a" rx="3"/>
+  <ellipse cx="160" cy="80" rx="20" ry="8" fill="#e8c99a"/>
+  <ellipse cx="235" cy="90" rx="15" ry="6" fill="#e8c99a"/>
+  <text x="200" y="275" font-family="sans-serif" font-size="16" font-weight="bold" fill="#6b4a1e" text-anchor="middle">Deko &amp; Wohnen</text>
+</svg>
