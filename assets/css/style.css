@@ -116,6 +116,145 @@ button {
   font-family: inherit;
 }
 
+/* ----- Intro Splash (50 Jahre) ----- */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 60%, var(--bg) 0%, #08110d 70%, #050806 100%);
+  overflow: hidden;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+#intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: leafFloat 3.2s ease forwards;
+}
+
+.leaf svg {
+  fill: var(--primary);
+}
+
+@keyframes leafFloat {
+  0% { transform: translateY(0) rotate(0deg) scale(0.55); opacity: 0; }
+  20% { opacity: 0.55; }
+  80% { opacity: 0.35; }
+  100% { transform: translateY(-105vh) rotate(340deg) scale(1.05); opacity: 0; }
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--text-on-dark);
+  animation: introReveal 0.55s ease 0.1s both;
+  padding-inline: var(--container-padding);
+}
+
+@keyframes introReveal {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.intro-badge {
+  display: inline-block;
+  border: 1px solid rgba(255, 212, 0, 0.45);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 1rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.intro-fifty {
+  font-size: clamp(84px, 22vw, 190px);
+  font-weight: 800;
+  line-height: 0.88;
+  color: var(--accent);
+  text-shadow: 0 4px 28px rgba(255, 212, 0, 0.32);
+}
+
+.intro-jahre {
+  font-size: clamp(18px, 4vw, 30px);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(247, 244, 238, 0.85);
+  margin-top: 0.35rem;
+}
+
+.intro-logo {
+  width: min(420px, 78vw);
+  height: auto;
+  margin: 0.9rem auto 0;
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.35));
+}
+
+.intro-tagline {
+  font-size: clamp(14px, 2vw, 18px);
+  color: rgba(247, 244, 238, 0.75);
+  margin-top: 0.6rem;
+}
+
+.intro-skip {
+  margin-top: 1.3rem;
+  border: 1px solid rgba(247, 244, 238, 0.45);
+  color: var(--text-on-dark);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.intro-skip:hover {
+  background-color: rgba(247, 244, 238, 0.12);
+  border-color: rgba(247, 244, 238, 0.72);
+}
+
+[data-open-status] {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+[data-open-status].is-open {
+  background-color: rgba(31, 107, 58, 0.14);
+  color: var(--primary);
+  border-color: rgba(31, 107, 58, 0.35);
+}
+
+[data-open-status].is-closed {
+  background-color: rgba(11, 15, 13, 0.08);
+  color: var(--ink);
+  border-color: rgba(11, 15, 13, 0.22);
+}
+
 /* ----- Skip to content ----- */
 .skip-to-content {
   position: absolute;
@@ -558,8 +697,10 @@ p:last-child { margin-bottom: 0; }
 
 .circular-gallery {
   position: relative;
-  width: 100%;
-  height: 420px;
+  width: min(100%, 1200px);
+  height: 500px;
+  margin-inline: auto;
+  margin-top: var(--space-lg);
   perspective: 900px;
   cursor: grab;
   user-select: none;

@@ -14,6 +14,70 @@ const prefersReducedMotion = () =>
 const lerp = (a, b, t) => a + (b - a) * t;
 
 /* ============================================================
+   0. INTRO SPLASH
+   ============================================================ */
+
+function initIntro() {
+  const intro = document.getElementById('intro');
+  const skipBtn = document.getElementById('introSkip');
+  const leavesContainer = document.getElementById('introLeaves');
+
+  if (!intro) return;
+
+  const leafSVGs = [
+    `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8C8 10 5.9 16.17 3.82 20.33L5.71 21l1-2.3A4.49 4.49 0 0 0 8 19c8 0 12-8 12-8a11.9 11.9 0 0 1-3 3z"/></svg>`,
+    `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="7" ry="11" transform="rotate(28 12 12)"/></svg>`,
+    `<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5 4 7 9 6 13-1 4-5 7-10 7 1-2 1-4 0-6-1-2-1-8 4-14z"/></svg>`,
+  ];
+
+  if (leavesContainer && !prefersReducedMotion()) {
+    for (let i = 0; i < 14; i += 1) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      leaf.innerHTML = leafSVGs[i % leafSVGs.length];
+      leaf.style.left = `${Math.random() * 100}%`;
+      leaf.style.animationDelay = `${Math.random() * 1.2}s`;
+      leaf.style.animationDuration = `${2.4 + Math.random() * 1.2}s`;
+      leaf.style.transform = `scale(${0.7 + Math.random() * 0.8})`;
+      leavesContainer.appendChild(leaf);
+    }
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  const AUTO_DISMISS_MS = prefersReducedMotion() ? 350 : 2600;
+  let isDismissed = false;
+
+  function dismiss() {
+    if (isDismissed) return;
+    isDismissed = true;
+    intro.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  const timer = window.setTimeout(dismiss, AUTO_DISMISS_MS);
+
+  skipBtn?.addEventListener('click', () => {
+    window.clearTimeout(timer);
+    dismiss();
+  });
+
+  intro.addEventListener('click', (event) => {
+    if (event.target === intro) {
+      window.clearTimeout(timer);
+      dismiss();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      window.clearTimeout(timer);
+      dismiss();
+    }
+  });
+}
+
+/* ============================================================
    1. MOBILE NAV TOGGLE
    ============================================================ */
 
@@ -287,9 +351,15 @@ function initCircularGallery() {
   });
 
   // Config
-  const radius = 350;
-  const itemWidth = 200;
-  const itemHeight = 150;
+  function getSizingConfig() {
+    const width = container.getBoundingClientRect().width;
+    const radius = Math.max(280, Math.min(440, width * 0.36));
+    const itemWidth = Math.max(220, Math.min(300, width * 0.25));
+    const itemHeight = itemWidth * 0.72;
+    return { radius, itemWidth, itemHeight };
+  }
+
+  let { radius, itemWidth, itemHeight } = getSizingConfig();
   const scrollSpeed = 2.3;
   const scrollEase = 0.09;
   const borderRadius = 0.07;       // fraction of item width
@@ -305,10 +375,11 @@ function initCircularGallery() {
 
   function getContainerCenter() {
     const rect = container.getBoundingClientRect();
-    return { x: rect.width / 2, y: rect.height / 2 };
+    return { x: rect.width / 2, y: rect.height * 0.46 };
   }
 
   function updateItems(angle) {
+    ({ radius, itemWidth, itemHeight } = getSizingConfig());
     const center = getContainerCenter();
     const angleStep = (Math.PI * 2) / itemCount;
 
@@ -329,6 +400,8 @@ function initCircularGallery() {
       const opacity = 0.3 + depth * 0.7;
 
       el.style.cssText = `
+        top: 0;
+        left: 0;
         width: ${itemWidth * scale}px;
         height: ${itemHeight * scale}px;
         transform: translate(${posX}px, ${posY}px);
@@ -538,7 +611,57 @@ function initHeaderScroll() {
 }
 
 /* ============================================================
-   8. HANDLE PHP FORM RESULT (for toast on page load after redirect)
+   8. LIVE OPENING STATUS
+   ============================================================ */
+
+function initOpeningStatus() {
+  const statusElements = document.querySelectorAll('[data-open-status]');
+  if (!statusElements.length) return;
+
+  const schedule = {
+    Mon: [9 * 60, 18 * 60],
+    Tue: [9 * 60, 18 * 60],
+    Wed: [9 * 60, 18 * 60],
+    Thu: [9 * 60, 18 * 60],
+    Fri: [9 * 60, 18 * 60],
+    Sat: [9 * 60, 16 * 60],
+    Sun: [10 * 60, 12 * 60],
+  };
+
+  function getBerlinTimeParts() {
+    const formatter = new Intl.DateTimeFormat('en-GB', {
+      weekday: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+      timeZone: 'Europe/Berlin',
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const weekday = parts.find((part) => part.type === 'weekday')?.value;
+    const hour = Number(parts.find((part) => part.type === 'hour')?.value ?? 0);
+    const minute = Number(parts.find((part) => part.type === 'minute')?.value ?? 0);
+    return { weekday, minuteOfDay: hour * 60 + minute };
+  }
+
+  function updateStatus() {
+    const { weekday, minuteOfDay } = getBerlinTimeParts();
+    const hours = weekday ? schedule[weekday] : null;
+    const isOpen = Boolean(hours && minuteOfDay >= hours[0] && minuteOfDay < hours[1]);
+
+    statusElements.forEach((element) => {
+      element.classList.toggle('is-open', isOpen);
+      element.classList.toggle('is-closed', !isOpen);
+      element.textContent = isOpen ? 'Jetzt geöffnet' : 'Jetzt geschlossen';
+    });
+  }
+
+  updateStatus();
+  window.setInterval(updateStatus, 60 * 1000);
+}
+
+/* ============================================================
+   9. HANDLE PHP FORM RESULT (for toast on page load after redirect)
    ============================================================ */
 
 function handleFormResult() {
@@ -559,11 +682,13 @@ function handleFormResult() {
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initIntro();
   initMobileNav();
   initScrollReveal();
   initSmoothScroll();
   initCircularGallery();
   initContactForm();
   initHeaderScroll();
+  initOpeningStatus();
   handleFormResult();
 });

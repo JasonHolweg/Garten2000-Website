@@ -96,6 +96,7 @@ include __DIR__ . '/../partials/header.php';
           <span class="contact-info-icon" aria-hidden="true">🕐</span>
           <div>
             <span class="label">Öffnungszeiten</span>
+            <span class="value" data-open-status aria-live="polite" style="display:block;margin-bottom:.35rem;">Status wird geladen …</span>
             <span class="value" style="font-style:normal;">
               Mo – Fr: 09:00 – 18:00 Uhr<br>
               Sa: 09:00 – 16:00 Uhr<br>
@@ -216,6 +217,6 @@ include __DIR__ . '/../partials/header.php';
   window.__FORM_SUCCESS = <?= $formSuccess ? 'true' : 'false' ?>;
   window.__FORM_ERROR   = <?= $formError ? '"' . addslashes(htmlspecialchars($formError, ENT_QUOTES, 'UTF-8')) . '"' : 'false' ?>;
 </script>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>

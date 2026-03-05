@@ -3,6 +3,8 @@
 $pageTitle       = $pageTitle       ?? 'Garten2000+mehr – Ihr Gartencenter in Handewitt';
 $pageDescription = $pageDescription ?? 'Pflanzen, Blumen, Floristik und Dekoration im Gartenfachgeschäft Garten2000+mehr in Handewitt.';
 $canonicalPath   = $canonicalPath   ?? '/';
+$styleCssVersion = (string) (@filemtime(__DIR__ . '/../assets/css/style.css') ?: time());
+$mainJsVersion   = (string) (@filemtime(__DIR__ . '/../assets/js/main.js') ?: time());
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -22,7 +24,7 @@ $canonicalPath   = $canonicalPath   ?? '/';
   <!-- Favicon -->
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=<?= rawurlencode($styleCssVersion) ?>">
   <!-- Preconnect for maps -->
   <link rel="preconnect" href="https://maps.google.com">
 </head>

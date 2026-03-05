@@ -26,7 +26,7 @@ if (!in_array($page, $allowed, true)) {
     <?php
     include __DIR__ . '/partials/footer.php';
     ?>
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
     </body>
     </html>
     <?php
@@ -77,6 +77,20 @@ $galleryItemsJson = htmlspecialchars((string) json_encode($galleryItems, JSON_UN
 include __DIR__ . '/partials/head.php';
 include __DIR__ . '/partials/header.php';
 ?>
+
+<div id="intro" role="dialog" aria-label="Jubiläumsintro">
+  <div class="intro-leaves" id="introLeaves" aria-hidden="true"></div>
+  <div class="intro-content">
+    <div class="intro-badge">✦ Jubiläum ✦</div>
+    <div class="intro-fifty" aria-label="50">50</div>
+    <div class="intro-jahre">Jahre</div>
+    <img src="/assets/img/logo.png" alt="Garten2000+mehr" class="intro-logo" loading="eager" decoding="async">
+    <div class="intro-tagline">Handewitt · Seit 1976 · Mit Leidenschaft</div>
+    <button class="intro-skip" id="introSkip" aria-label="Intro überspringen">
+      Überspringen →
+    </button>
+  </div>
+</div>
 
 <main id="main-content">
 
@@ -201,6 +215,7 @@ include __DIR__ . '/partials/header.php';
         <!-- Opening hours card -->
         <div class="hours-card reveal">
           <h3>Unsere Öffnungszeiten</h3>
+          <p class="hours-live-status" data-open-status aria-live="polite">Status wird geladen …</p>
           <table class="hours-table">
             <tbody>
               <tr>
@@ -275,6 +290,6 @@ include __DIR__ . '/partials/header.php';
 </main>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>

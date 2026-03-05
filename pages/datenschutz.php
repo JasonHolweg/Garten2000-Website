@@ -138,6 +138,6 @@ include __DIR__ . '/../partials/header.php';
 </main>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>
