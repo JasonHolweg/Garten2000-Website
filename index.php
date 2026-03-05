@@ -44,6 +44,29 @@ $pageTitle       = 'Garten2000+mehr – Ihr Gartencenter in Handewitt';
 $pageDescription = 'Pflanzen, Blumen, Floristik und Dekoration im Gartenfachgeschäft Garten2000+mehr in Handewitt.';
 $canonicalPath   = '/';
 
+$galleryFiles = glob(__DIR__ . '/assets/img/gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) ?: [];
+natsort($galleryFiles);
+$galleryItems = [];
+foreach (array_values($galleryFiles) as $index => $filePath) {
+  $galleryItems[] = [
+    'src' => '/assets/img/gallery/' . basename($filePath),
+    'alt' => 'Sortimentsfoto ' . ($index + 1),
+  ];
+}
+if (!$galleryItems) {
+  $galleryItems = [
+    ['src' => '/assets/img/gallery-1.svg', 'alt' => 'Pflanzen'],
+    ['src' => '/assets/img/gallery-2.svg', 'alt' => 'Floristik'],
+    ['src' => '/assets/img/gallery-3.svg', 'alt' => 'Deko'],
+    ['src' => '/assets/img/gallery-4.svg', 'alt' => 'Garten'],
+    ['src' => '/assets/img/gallery-5.svg', 'alt' => 'Geschenke'],
+    ['src' => '/assets/img/gallery-6.svg', 'alt' => 'Saisonal'],
+    ['src' => '/assets/img/gallery-7.svg', 'alt' => 'Balkon'],
+    ['src' => '/assets/img/gallery-8.svg', 'alt' => 'Indoor'],
+  ];
+}
+$galleryItemsJson = htmlspecialchars((string) json_encode($galleryItems, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), ENT_QUOTES, 'UTF-8');
+
 include __DIR__ . '/partials/head.php';
 include __DIR__ . '/partials/header.php';
 ?>
@@ -153,16 +176,7 @@ include __DIR__ . '/partials/header.php';
     <div class="circular-gallery" id="circular-gallery"
          role="img"
          aria-label="Bildergalerie mit Sortimentsfotos"
-         data-items='[
-           {"src":"/assets/img/gallery-1.svg","alt":"Pflanzen"},
-           {"src":"/assets/img/gallery-2.svg","alt":"Floristik"},
-           {"src":"/assets/img/gallery-3.svg","alt":"Deko"},
-           {"src":"/assets/img/gallery-4.svg","alt":"Garten"},
-           {"src":"/assets/img/gallery-5.svg","alt":"Geschenke"},
-           {"src":"/assets/img/gallery-6.svg","alt":"Saisonal"},
-           {"src":"/assets/img/gallery-7.svg","alt":"Balkon"},
-           {"src":"/assets/img/gallery-8.svg","alt":"Indoor"}
-         ]'>
+         data-items='<?= $galleryItemsJson ?>'>
     </div>
   </section>
 

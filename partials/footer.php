@@ -4,7 +4,7 @@
 
       <!-- Col 1: About / Logo -->
       <div class="footer-col">
-        <img src="/assets/img/logo-placeholder.svg" alt="Garten2000+mehr Logo" style="max-height:48px;margin-bottom:1rem;opacity:.85;">
+        <img src="/assets/img/logo.png" alt="Garten2000+mehr Logo" style="max-height:48px;margin-bottom:1rem;opacity:.85;">
         <p>Ihr Gartenfachgeschäft in Handewitt – Pflanzen, Floristik, Deko und mehr seit 1976.</p>
         <div class="footer-gallery" style="margin-top:1rem;" aria-label="Impressionen">
           <div class="footer-thumb"><img src="/assets/img/gallery-1.svg" alt="Pflanzen" loading="lazy"></div>

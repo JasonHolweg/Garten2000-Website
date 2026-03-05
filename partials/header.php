@@ -2,7 +2,7 @@
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="/" class="logo-link" aria-label="Garten2000+mehr – Startseite">
-      <img src="/assets/img/logo-placeholder.svg" alt="Garten2000+mehr Logo" class="logo-img" width="200" height="52">
+      <img src="/assets/img/logo.png" alt="Garten2000+mehr Logo" class="logo-img" width="200" height="52">
     </a>
 
     <button class="nav-toggle" id="nav-toggle"
