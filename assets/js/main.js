@@ -292,7 +292,8 @@ function initCircularGallery() {
   const itemHeight = 150;
   const scrollSpeed = 2.3;
   const scrollEase = 0.09;
-  const borderRadius = 0.07; // fraction of width
+  const borderRadius = 0.07;       // fraction of item width
+  const AUTO_ROTATE_SPEED = 0.4;   // radians per second for idle auto-rotation
 
   let currentAngle = 0;   // actual rendered angle
   let targetAngle = 0;    // desired angle (lerped toward)
@@ -401,7 +402,7 @@ function initCircularGallery() {
     if (!isDragging) {
       if (lastTime !== null) {
         const dt = time - lastTime;
-        targetAngle += (dt / 1000) * 0.4; // ~0.4 rad/s
+        targetAngle += (dt / 1000) * AUTO_ROTATE_SPEED;
       }
       lastTime = time;
     } else {
