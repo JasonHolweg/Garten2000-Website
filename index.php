@@ -44,6 +44,13 @@ $pageTitle       = 'Garten2000+mehr – Ihr Gartencenter in Handewitt';
 $pageDescription = 'Pflanzen, Blumen, Floristik und Dekoration im Gartenfachgeschäft Garten2000+mehr in Handewitt.';
 $canonicalPath   = '/';
 
+$heroImagePath = '/assets/img/hero-1.svg';
+$heroCandidates = glob(__DIR__ . '/assets/img/hero.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) ?: [];
+if ($heroCandidates) {
+  natsort($heroCandidates);
+  $heroImagePath = '/assets/img/' . basename((string) array_values($heroCandidates)[0]);
+}
+
 $galleryFiles = glob(__DIR__ . '/assets/img/gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) ?: [];
 natsort($galleryFiles);
 $galleryItems = [];
@@ -77,7 +84,7 @@ include __DIR__ . '/partials/header.php';
        SECTION 1: HERO
        ============================================= -->
   <section class="hero" aria-label="Willkommen"
-           style="background-image: url('/assets/img/hero-1.svg');">
+       style="background-image: url('<?= htmlspecialchars($heroImagePath, ENT_QUOTES, 'UTF-8') ?>');">
     <div class="hero-content reveal">
       <span class="hero-eyebrow">Gartenfachgeschäft in Handewitt</span>
       <h1>Natur erleben.<br>Freude verschenken.</h1>
