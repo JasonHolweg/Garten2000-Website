@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#e9f1ea"/>
+  <circle cx="130" cy="120" r="40" fill="#a8d5b5"/>
+  <circle cx="200" cy="110" r="45" fill="#74c69d"/>
+  <circle cx="270" cy="120" r="40" fill="#a8d5b5"/>
+  <rect x="90" y="155" width="80" height="80" fill="#a8d5b5" rx="40"/>
+  <rect x="155" y="148" width="90" height="90" fill="#74c69d" rx="45"/>
+  <rect x="230" y="155" width="80" height="80" fill="#a8d5b5" rx="40"/>
+  <text x="200" y="280" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1f6b3a" text-anchor="middle">Team</text>
+</svg>
