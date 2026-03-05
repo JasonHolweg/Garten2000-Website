@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'send'
             $headers    = "From: noreply@garten2000-handewitt.de\r\n"
                         . "Reply-To: {$email}\r\n"
                         . "Content-Type: text/plain; charset=UTF-8";
+            // NOTE: Uncomment the line below once the mail server is configured on the host.
             // mail($to, $mailSubj, $mailBody, $headers);
             $formSuccess = true;
         }
