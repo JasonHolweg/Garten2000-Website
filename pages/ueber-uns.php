@@ -145,7 +145,7 @@ $timelineItems = [
               <p><?= htmlspecialchars($item['text'], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
             <div class="timeline-image">
-              <img src="/assets/img/<?= htmlspecialchars($item['img'], ENT_QUOTES, 'UTF-8') ?>"
+              <img src="<?= htmlspecialchars(asset_url('img/' . $item['img']), ENT_QUOTES, 'UTF-8') ?>"
                    alt="<?= htmlspecialchars($item['alt'], ENT_QUOTES, 'UTF-8') ?>"
                    loading="lazy">
             </div>
@@ -162,7 +162,7 @@ $timelineItems = [
           <a href="mailto:jan-holweg@garten2000-handewitt.de">jan-holweg@garten2000-handewitt.de</a>
         </p>
         <div>
-          <a href="/?page=kontakt" class="btn btn-primary">Kontakt aufnehmen</a>
+          <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Kontakt aufnehmen</a>
         </div>
       </div>
 
@@ -172,6 +172,6 @@ $timelineItems = [
 </main>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>
-<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
+<script src="<?= htmlspecialchars(asset_url('js/main.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>

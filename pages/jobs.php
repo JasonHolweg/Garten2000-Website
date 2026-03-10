@@ -116,7 +116,7 @@ include __DIR__ . '/../partials/header.php';
           junge Gärtnerinnen und Gärtner aus und legen großen Wert auf eine praxisnahe, fundierte
           Ausbildung. Werden Sie Teil unserer Erfolgsgeschichte!
         </p>
-        <a href="/?page=kontakt" class="btn btn-primary mt-md">Kontakt aufnehmen</a>
+        <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary mt-md">Kontakt aufnehmen</a>
       </div>
 
     </div><!-- /.container -->
@@ -125,6 +125,6 @@ include __DIR__ . '/../partials/header.php';
 </main>
 
 <?php include __DIR__ . '/../partials/footer.php'; ?>
-<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
+<script src="<?= htmlspecialchars(asset_url('js/main.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>

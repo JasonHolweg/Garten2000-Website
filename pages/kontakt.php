@@ -144,7 +144,7 @@ include __DIR__ . '/../partials/header.php';
         <strong>Hinweis:</strong> Bei falscher oder unvollständiger E-Mail-Adresse können wir keine Antwort senden.
       </p>
 
-      <form id="contact-form" method="POST" action="/?page=kontakt" novalidate>
+      <form id="contact-form" method="POST" action="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" novalidate>
         <input type="hidden" name="action" value="send">
 
         <!-- Honeypot -->
@@ -196,7 +196,7 @@ include __DIR__ . '/../partials/header.php';
           <input type="checkbox" id="dsgvo" name="dsgvo" class="form-checkbox" required
                  <?= isset($_POST['dsgvo']) ? 'checked' : '' ?>>
           <label for="dsgvo" class="form-checkbox-label">
-            Ich habe die <a href="/?page=datenschutz" target="_blank">Datenschutzerklärung</a>
+            Ich habe die <a href="<?= htmlspecialchars(site_url('?page=datenschutz'), ENT_QUOTES, 'UTF-8') ?>" target="_blank">Datenschutzerklärung</a>
             gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.
             <span class="required" aria-label="Pflichtfeld">*</span>
           </label>
@@ -217,6 +217,6 @@ include __DIR__ . '/../partials/header.php';
   window.__FORM_SUCCESS = <?= $formSuccess ? 'true' : 'false' ?>;
   window.__FORM_ERROR   = <?= $formError ? '"' . addslashes(htmlspecialchars($formError, ENT_QUOTES, 'UTF-8')) . '"' : 'false' ?>;
 </script>
-<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
+<script src="<?= htmlspecialchars(asset_url('js/main.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>

@@ -20,13 +20,13 @@ if (!in_array($page, $allowed, true)) {
         </div>
       </div>
       <div class="container" style="padding-block:3rem;text-align:center;">
-        <a href="/" class="btn btn-primary">Zur Startseite</a>
+        <a href="<?= htmlspecialchars(site_url(), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Zur Startseite</a>
       </div>
     </main>
     <?php
     include __DIR__ . '/partials/footer.php';
     ?>
-    <script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
+    <script src="<?= htmlspecialchars(asset_url('js/main.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($mainJsVersion) ?>"></script>
     </body>
     </html>
     <?php
@@ -44,11 +44,11 @@ $pageTitle       = 'Garten2000+mehr – Ihr Gartencenter in Handewitt';
 $pageDescription = 'Pflanzen, Blumen, Floristik und Dekoration im Gartenfachgeschäft Garten2000+mehr in Handewitt.';
 $canonicalPath   = '/';
 
-$heroImagePath = '/assets/img/hero-1.svg';
+$heroImagePath = 'assets/img/hero-1.svg';
 $heroCandidates = glob(__DIR__ . '/assets/img/hero.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) ?: [];
 if ($heroCandidates) {
   natsort($heroCandidates);
-  $heroImagePath = '/assets/img/' . basename((string) array_values($heroCandidates)[0]);
+  $heroImagePath = 'assets/img/' . basename((string) array_values($heroCandidates)[0]);
 }
 
 $galleryFiles = glob(__DIR__ . '/assets/img/gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) ?: [];
@@ -56,20 +56,20 @@ natsort($galleryFiles);
 $galleryItems = [];
 foreach (array_values($galleryFiles) as $index => $filePath) {
   $galleryItems[] = [
-    'src' => '/assets/img/gallery/' . basename($filePath),
+    'src' => 'assets/img/gallery/' . basename($filePath),
     'alt' => 'Sortimentsfoto ' . ($index + 1),
   ];
 }
 if (!$galleryItems) {
   $galleryItems = [
-    ['src' => '/assets/img/gallery-1.svg', 'alt' => 'Pflanzen'],
-    ['src' => '/assets/img/gallery-2.svg', 'alt' => 'Floristik'],
-    ['src' => '/assets/img/gallery-3.svg', 'alt' => 'Deko'],
-    ['src' => '/assets/img/gallery-4.svg', 'alt' => 'Garten'],
-    ['src' => '/assets/img/gallery-5.svg', 'alt' => 'Geschenke'],
-    ['src' => '/assets/img/gallery-6.svg', 'alt' => 'Saisonal'],
-    ['src' => '/assets/img/gallery-7.svg', 'alt' => 'Balkon'],
-    ['src' => '/assets/img/gallery-8.svg', 'alt' => 'Indoor'],
+    ['src' => 'assets/img/gallery-1.svg', 'alt' => 'Pflanzen'],
+    ['src' => 'assets/img/gallery-2.svg', 'alt' => 'Floristik'],
+    ['src' => 'assets/img/gallery-3.svg', 'alt' => 'Deko'],
+    ['src' => 'assets/img/gallery-4.svg', 'alt' => 'Garten'],
+    ['src' => 'assets/img/gallery-5.svg', 'alt' => 'Geschenke'],
+    ['src' => 'assets/img/gallery-6.svg', 'alt' => 'Saisonal'],
+    ['src' => 'assets/img/gallery-7.svg', 'alt' => 'Balkon'],
+    ['src' => 'assets/img/gallery-8.svg', 'alt' => 'Indoor'],
   ];
 }
 $galleryItemsJson = htmlspecialchars((string) json_encode($galleryItems, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), ENT_QUOTES, 'UTF-8');
@@ -84,7 +84,7 @@ include __DIR__ . '/partials/header.php';
     <div class="intro-badge">✦ Jubiläum ✦</div>
     <div class="intro-fifty" aria-label="50">50</div>
     <div class="intro-jahre">Jahre</div>
-    <img src="/assets/img/logo.png" alt="Garten2000+mehr" class="intro-logo" loading="eager" decoding="async">
+    <img src="<?= htmlspecialchars(asset_url('img/logo.png'), ENT_QUOTES, 'UTF-8') ?>" alt="Garten2000+mehr" class="intro-logo" loading="eager" decoding="async">
     <div class="intro-tagline">Handewitt · Seit 1976 · Mit Leidenschaft</div>
     <button class="intro-skip" id="introSkip" aria-label="Intro überspringen">
       Überspringen →
@@ -109,7 +109,7 @@ include __DIR__ . '/partials/header.php';
         Dekorationen Freude zu bereiten – als Geschenk oder für das eigene gemütliche Zuhause.
       </p>
       <div class="hero-actions">
-        <a href="/?page=kontakt" class="btn btn-accent">Kontakt</a>
+        <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-accent">Kontakt</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Altholzkrug+40,+24976+Handewitt"
            class="btn btn-primary" target="_blank" rel="noopener noreferrer">
           Anfahrt
@@ -128,7 +128,7 @@ include __DIR__ . '/partials/header.php';
     <div class="container">
       <div class="split-inner">
         <div class="split-image reveal">
-          <img src="/assets/img/plants-1.svg" alt="Große Auswahl an Pflanzen" loading="lazy">
+          <img src="<?= htmlspecialchars(asset_url('img/plants-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Große Auswahl an Pflanzen" loading="lazy">
         </div>
         <div class="split-text reveal reveal-delay-1">
           <h2>Unsere Pflanzen</h2>
@@ -137,7 +137,7 @@ include __DIR__ . '/partials/header.php';
             Auswahl an Pflanzen für jeden Anlass und jeden Ort.
           </p>
           <div>
-            <a href="/?page=kontakt" class="btn btn-primary">Mehr erfahren</a>
+            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Mehr erfahren</a>
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@ include __DIR__ . '/partials/header.php';
     <div class="container">
       <div class="split-inner">
         <div class="split-image reveal">
-          <img src="/assets/img/floristik-1.svg" alt="Floristik und Blumensträuße" loading="lazy">
+          <img src="<?= htmlspecialchars(asset_url('img/floristik-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Floristik und Blumensträuße" loading="lazy">
         </div>
         <div class="split-text reveal reveal-delay-1">
           <h2>Floristik &amp; Geschenke</h2>
@@ -158,7 +158,7 @@ include __DIR__ . '/partials/header.php';
             mit Ihnen den perfekten Moment.
           </p>
           <div>
-            <a href="/?page=kontakt" class="btn btn-primary">Jetzt anfragen</a>
+            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Jetzt anfragen</a>
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@ include __DIR__ . '/partials/header.php';
     <div class="container">
       <div class="split-inner">
         <div class="split-image reveal">
-          <img src="/assets/img/deko-1.svg" alt="Deko und Wohnaccessoires" loading="lazy">
+          <img src="<?= htmlspecialchars(asset_url('img/deko-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Deko und Wohnaccessoires" loading="lazy">
         </div>
         <div class="split-text reveal reveal-delay-1">
           <h2>Deko &amp; Wohnen</h2>
@@ -179,7 +179,7 @@ include __DIR__ . '/partials/header.php';
             gemütliche Atmosphäre, drinnen wie draußen.
           </p>
           <div>
-            <a href="/?page=kontakt" class="btn btn-primary">Kontakt aufnehmen</a>
+            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Kontakt aufnehmen</a>
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@ include __DIR__ . '/partials/header.php';
                class="btn btn-primary" target="_blank" rel="noopener noreferrer">
               Route planen
             </a>
-            <a href="/?page=kontakt" class="btn btn-ghost-dark">Kontakt</a>
+            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-ghost-dark">Kontakt</a>
           </div>
         </div>
 
@@ -280,7 +280,7 @@ include __DIR__ . '/partials/header.php';
         <a href="tel:+494619330" class="btn btn-accent">
           Jetzt anrufen
         </a>
-        <a href="/?page=kontakt" class="btn btn-ghost">
+        <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-ghost">
           Zum Kontaktformular
         </a>
       </div>
@@ -290,6 +290,6 @@ include __DIR__ . '/partials/header.php';
 </main>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>
-<script src="/assets/js/main.js?v=<?= rawurlencode($mainJsVersion) ?>"></script>
+<script src="<?= htmlspecialchars(asset_url('js/main.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($mainJsVersion) ?>"></script>
 </body>
 </html>
