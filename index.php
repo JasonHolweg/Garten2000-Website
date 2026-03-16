@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 $page    = $_GET['page'] ?? 'home';
-$allowed = ['home', 'kontakt', 'ueber-uns', 'jobs', 'impressum', 'datenschutz'];
+$allowed = ['home', 'kontakt', 'ueber-uns', 'jobs', 'impressum', 'datenschutz', 'sortiment', 'inspiration', 'beratung'];
 
 if (!in_array($page, $allowed, true)) {
     http_response_code(404);
@@ -101,15 +101,14 @@ include __DIR__ . '/partials/header.php';
        style="background-image: url('<?= htmlspecialchars($heroImagePath, ENT_QUOTES, 'UTF-8') ?>');">
     <div class="hero-content reveal">
       <span class="hero-eyebrow">Gartenfachgeschäft in Handewitt</span>
-      <h1>Natur erleben.<br>Freude verschenken.</h1>
+      <h1>Ihr Garten.<br>Unsere Leidenschaft.</h1>
       <p class="hero-claim">
-        Willkommen im Gartenfachgeschäft Garten2000+mehr. Wir freuen uns über Ihr Interesse
-        an unserem floralen Angebot. Verschaffen Sie sich einen ersten Eindruck auf unserer
-        Website. Erleben Sie bei uns in Handewitt die Möglichkeit, mit Blumen, Pflanzen und
-        Dekorationen Freude zu bereiten – als Geschenk oder für das eigene gemütliche Zuhause.
+        Seit 1976 begleiten wir Menschen in Handewitt und der Region dabei, ihren
+        Garten, Balkon und ihr Zuhause mit Pflanzen, Floristik und Deko zu gestalten –
+        persönlich, kompetent und mit echtem Herzblut.
       </p>
       <div class="hero-actions">
-        <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-accent">Kontakt</a>
+        <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-accent">Sortiment entdecken</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=Altholzkrug+40,+24976+Handewitt"
            class="btn btn-primary" target="_blank" rel="noopener noreferrer">
           Anfahrt
@@ -120,66 +119,149 @@ include __DIR__ . '/partials/header.php';
   </section>
 
   <!-- =============================================
-       SECTION 2: SPLIT SECTIONS
+       SECTION 2: TRUST BAR
        ============================================= -->
-
-  <!-- a) Pflanzen -->
-  <section class="split-section section">
+  <section class="trust-bar" aria-label="Unsere Eckdaten">
     <div class="container">
-      <div class="split-inner">
-        <div class="split-image reveal">
-          <img src="<?= htmlspecialchars(asset_url('img/plants-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Große Auswahl an Pflanzen" loading="lazy">
+      <div class="trust-items">
+        <div class="trust-item">
+          <span class="trust-number">50</span>
+          <span class="trust-label">Jahre Erfahrung</span>
         </div>
-        <div class="split-text reveal reveal-delay-1">
-          <h2>Unsere Pflanzen</h2>
-          <p>
-            Von der zarten Zimmerpflanze bis zur robusten Hecke – bei uns finden Sie eine große
-            Auswahl an Pflanzen für jeden Anlass und jeden Ort.
-          </p>
-          <div>
-            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Mehr erfahren</a>
-          </div>
+        <div class="trust-item">
+          <span class="trust-number">20.000 m²</span>
+          <span class="trust-label">Ausstellungsfläche</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-number">Seit 1976</span>
+          <span class="trust-label">Familienunternehmen</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-number">Regional</span>
+          <span class="trust-label">Verwurzelt in Handewitt</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- b) Floristik & Geschenke -->
-  <section class="split-section section reverse" style="background-color:var(--soft);">
+  <!-- =============================================
+       SECTION 3: CATEGORY GRID
+       ============================================= -->
+  <section class="categories-section" aria-label="Unser Sortiment">
     <div class="container">
-      <div class="split-inner">
-        <div class="split-image reveal">
-          <img src="<?= htmlspecialchars(asset_url('img/floristik-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Floristik und Blumensträuße" loading="lazy">
-        </div>
-        <div class="split-text reveal reveal-delay-1">
-          <h2>Floristik &amp; Geschenke</h2>
-          <p>
-            Frische Blumensträuße, festliche Gestecke und kreative Geschenkideen – wir gestalten
-            mit Ihnen den perfekten Moment.
-          </p>
-          <div>
-            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Jetzt anfragen</a>
+      <div class="section-header">
+        <h2 class="section-title reveal">Entdecken Sie unser Sortiment</h2>
+        <p class="section-subtitle reveal">Von der Zimmerpflanze bis zur Gartengestaltung – alles aus einer Hand</p>
+      </div>
+      <div class="category-grid">
+
+        <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" class="category-card reveal">
+          <div class="category-card-img">
+            <img src="<?= htmlspecialchars(asset_url('img/plants-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Pflanzen & Baumschule" loading="lazy">
           </div>
+          <div class="category-card-body">
+            <h3>Pflanzen &amp; Baumschule</h3>
+            <p>Zimmerpflanzen, Stauden, Gehölze, Kräuter und Bäume – eine riesige Vielfalt für drinnen und draußen.</p>
+            <span class="category-card-link">Zur Pflanzenwelt</span>
+          </div>
+        </a>
+
+        <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" class="category-card reveal reveal-delay-1">
+          <div class="category-card-img">
+            <img src="<?= htmlspecialchars(asset_url('img/floristik-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Floristik & Geschenke" loading="lazy">
+          </div>
+          <div class="category-card-body">
+            <h3>Floristik &amp; Geschenke</h3>
+            <p>Frische Sträuße, festliche Gestecke und kreative Geschenkideen – handgefertigt mit Leidenschaft.</p>
+            <span class="category-card-link">Zur Floristik</span>
+          </div>
+        </a>
+
+        <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" class="category-card reveal reveal-delay-2">
+          <div class="category-card-img">
+            <img src="<?= htmlspecialchars(asset_url('img/deko-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Deko & Wohnen" loading="lazy">
+          </div>
+          <div class="category-card-body">
+            <h3>Deko &amp; Wohnen</h3>
+            <p>Saisonale Dekorationen, Lichterketten und Wohnaccessoires für ein gemütliches Zuhause.</p>
+            <span class="category-card-link">Zur Deko-Welt</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 4: INSPIRATION TEASER
+       ============================================= -->
+  <section class="inspiration-teaser" aria-label="Gartenideen und Inspiration">
+    <div class="container">
+      <div class="inspiration-inner">
+        <div class="inspiration-text reveal">
+          <span class="eyebrow">Frühjahr 2026</span>
+          <h2>Lass dich für dein grünes Zuhause inspirieren</h2>
+          <p>
+            Ob Balkonkasten, Staudenbeet oder Wohnzimmerdschungel – wir zeigen Ihnen,
+            wie Pflanzen und Deko echte Wohlfühlatmosphäre schaffen. Holen Sie sich
+            Ihre Ideen direkt bei uns vor Ort.
+          </p>
+          <div class="flex-wrap-gap">
+            <a href="<?= htmlspecialchars(site_url('?page=inspiration'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Ideen entdecken</a>
+            <a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-ghost-dark">Beratung anfragen</a>
+          </div>
+        </div>
+        <?php
+        // Pick up to 3 gallery photos for the mosaic; fall back to SVGs
+        $mosaicPhotos = array_slice(array_values($galleryItems), 0, 3);
+        if (count($mosaicPhotos) < 3) {
+          $mosaicPhotos = [
+            ['src' => 'assets/img/gallery-1.svg', 'alt' => 'Pflanzen'],
+            ['src' => 'assets/img/gallery-2.svg', 'alt' => 'Floristik'],
+            ['src' => 'assets/img/gallery-3.svg', 'alt' => 'Deko'],
+          ];
+        }
+        ?>
+        <div class="inspiration-mosaic reveal reveal-delay-1" aria-hidden="true">
+          <?php foreach ($mosaicPhotos as $photo): ?>
+            <div class="mosaic-item">
+              <img src="<?= htmlspecialchars($photo['src'], ENT_QUOTES, 'UTF-8') ?>"
+                   alt="<?= htmlspecialchars($photo['alt'], ENT_QUOTES, 'UTF-8') ?>"
+                   loading="lazy">
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- c) Deko & Wohnen -->
-  <section class="split-section section">
+  <!-- =============================================
+       SECTION 5: ABOUT TEASER
+       ============================================= -->
+  <section class="about-teaser" aria-label="Über uns">
     <div class="container">
-      <div class="split-inner">
-        <div class="split-image reveal">
-          <img src="<?= htmlspecialchars(asset_url('img/deko-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Deko und Wohnaccessoires" loading="lazy">
+      <div class="about-teaser-inner">
+        <div class="about-teaser-text reveal">
+          <span class="eyebrow">Familienunternehmen seit 1976</span>
+          <h2>Mehr als nur ein Gartencenter</h2>
+          <blockquote>
+            „Was mein Vater auf dem Wochenmarkt begann, ist heute auf über 20.000 m²
+            gewachsen – doch das Wichtigste ist geblieben: echte Beratung und echte
+            Leidenschaft für Pflanzen."
+          </blockquote>
+          <p style="color:var(--text-muted);">Jan Holweg, Geschäftsführer</p>
+          <div class="about-teaser-facts">
+            <div class="about-fact">Herbert Holweg gründet das Unternehmen im April 1976</div>
+            <div class="about-fact">Heute über 20.000 m² Ausstellungsfläche in Handewitt</div>
+            <div class="about-fact">5 von 15 Mitarbeitern sind Familienmitglieder</div>
+            <div class="about-fact">Anerkannter Ausbildungsbetrieb seit 2004</div>
+            <div class="about-fact">Kostenlose E-Auto-Ladestationen auf dem Gelände</div>
+          </div>
+          <a href="<?= htmlspecialchars(site_url('?page=ueber-uns'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary" style="margin-top:var(--space-md);">Unsere Geschichte</a>
         </div>
-        <div class="split-text reveal reveal-delay-1">
-          <h2>Deko &amp; Wohnen</h2>
-          <p>
-            Saisonale Dekorationen, Wohnaccessoires und Lifestyle-Produkte – schaffen Sie eine
-            gemütliche Atmosphäre, drinnen wie draußen.
-          </p>
-          <div>
-            <a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">Kontakt aufnehmen</a>
+        <div class="reveal reveal-delay-2">
+          <div class="split-image" style="aspect-ratio:3/4;">
+            <img src="<?= htmlspecialchars(asset_url('img/team-1.svg'), ENT_QUOTES, 'UTF-8') ?>" alt="Das Team von Garten2000+mehr" loading="lazy">
           </div>
         </div>
       </div>
@@ -187,7 +269,7 @@ include __DIR__ . '/partials/header.php';
   </section>
 
   <!-- =============================================
-       SECTION 3: CIRCULAR GALLERY
+       SECTION 6: CIRCULAR GALLERY
        ============================================= -->
   <section class="section-gallery" aria-label="Sortiment Einblicke">
     <div class="container text-center">
@@ -202,7 +284,7 @@ include __DIR__ . '/partials/header.php';
   </section>
 
   <!-- =============================================
-       SECTION 4: ÖFFNUNGSZEITEN + KARTE
+       SECTION 7: ÖFFNUNGSZEITEN + KARTE
        ============================================= -->
   <section class="hours-section section-soft section" id="oeffnungszeiten" aria-label="Öffnungszeiten und Anfahrt">
     <div class="container">
@@ -261,7 +343,7 @@ include __DIR__ . '/partials/header.php';
   </section>
 
   <!-- =============================================
-       SECTION 5: KONTAKT-TEASER
+       SECTION 8: KONTAKT-TEASER
        ============================================= -->
   <section class="contact-teaser" aria-label="Kontakt aufnehmen">
     <div class="container">

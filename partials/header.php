@@ -16,12 +16,12 @@
 
     <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
       <ul class="nav-list">
-        <li><a href="<?= htmlspecialchars(site_url(), ENT_QUOTES, 'UTF-8') ?>"                  class="nav-link <?= ($currentPage === 'home')        ? 'active' : '' ?>">Startseite</a></li>
-        <li><a href="<?= htmlspecialchars(site_url('?page=ueber-uns'), ENT_QUOTES, 'UTF-8') ?>"   class="nav-link <?= ($currentPage === 'ueber-uns')   ? 'active' : '' ?>">Über uns</a></li>
-        <li><a href="<?= htmlspecialchars(site_url('?page=jobs'), ENT_QUOTES, 'UTF-8') ?>"        class="nav-link <?= ($currentPage === 'jobs')         ? 'active' : '' ?>">Jobs</a></li>
-        <li><a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>"     class="nav-link <?= ($currentPage === 'kontakt')      ? 'active' : '' ?>">Kontakt</a></li>
-        <li><a href="<?= htmlspecialchars(site_url('?page=impressum'), ENT_QUOTES, 'UTF-8') ?>"   class="nav-link <?= ($currentPage === 'impressum')    ? 'active' : '' ?>">Impressum</a></li>
-        <li><a href="<?= htmlspecialchars(site_url('?page=datenschutz'), ENT_QUOTES, 'UTF-8') ?>" class="nav-link <?= ($currentPage === 'datenschutz') ? 'active' : '' ?>">Datenschutz</a></li>
+        <li><a href="<?= htmlspecialchars(site_url(), ENT_QUOTES, 'UTF-8') ?>"                   class="nav-link <?= ($currentPage === 'home')        ? 'active' : '' ?>">Startseite</a></li>
+        <li><a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>"  class="nav-link <?= ($currentPage === 'sortiment')   ? 'active' : '' ?>">Sortiment</a></li>
+        <li><a href="<?= htmlspecialchars(site_url('?page=inspiration'), ENT_QUOTES, 'UTF-8') ?>" class="nav-link <?= ($currentPage === 'inspiration') ? 'active' : '' ?>">Inspiration</a></li>
+        <li><a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>"   class="nav-link <?= ($currentPage === 'beratung')    ? 'active' : '' ?>">Beratung</a></li>
+        <li><a href="<?= htmlspecialchars(site_url('?page=ueber-uns'), ENT_QUOTES, 'UTF-8') ?>"  class="nav-link <?= ($currentPage === 'ueber-uns')   ? 'active' : '' ?>">Über uns</a></li>
+        <li><a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>"    class="nav-link <?= ($currentPage === 'kontakt')      ? 'active' : '' ?>">Kontakt</a></li>
       </ul>
     </nav>
   </div>

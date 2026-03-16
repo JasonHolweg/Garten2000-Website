@@ -45,6 +45,9 @@
         <nav aria-label="Footer-Navigation">
           <ul style="display:flex;flex-direction:column;gap:.4rem;">
             <li><a href="<?= htmlspecialchars(site_url(), ENT_QUOTES, 'UTF-8') ?>">Startseite</a></li>
+            <li><a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>">Sortiment</a></li>
+            <li><a href="<?= htmlspecialchars(site_url('?page=inspiration'), ENT_QUOTES, 'UTF-8') ?>">Inspiration</a></li>
+            <li><a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>">Beratung</a></li>
             <li><a href="<?= htmlspecialchars(site_url('?page=ueber-uns'), ENT_QUOTES, 'UTF-8') ?>">Über uns</a></li>
             <li><a href="<?= htmlspecialchars(site_url('?page=jobs'), ENT_QUOTES, 'UTF-8') ?>">Jobs</a></li>
             <li><a href="<?= htmlspecialchars(site_url('?page=kontakt'), ENT_QUOTES, 'UTF-8') ?>">Kontakt</a></li>
