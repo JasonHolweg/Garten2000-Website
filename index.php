@@ -95,10 +95,35 @@ include __DIR__ . '/partials/header.php';
 <main id="main-content">
 
   <!-- =============================================
+       SEASONAL ANNOUNCEMENT BANNERS
+       (only the banner matching the active season is visible)
+       ============================================= -->
+  <div class="seasonal-banner seasonal-section" data-show="spring" role="alert" aria-live="polite">
+    🌸 Frühjahrserwachen! Frische Stauden, Balkonpflanzen &amp; Blumenzwiebeln jetzt in großer Auswahl –
+    <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" style="color:inherit;font-weight:700;">Sortiment entdecken&nbsp;→</a>
+  </div>
+  <div class="seasonal-banner seasonal-section" data-show="summer" role="alert" aria-live="polite">
+    ☀️ Sommerzeit! Kräuter, Stauden &amp; bunte Balkonblüher warten auf Sie –
+    <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" style="color:inherit;font-weight:700;">Jetzt stöbern&nbsp;→</a>
+  </div>
+  <div class="seasonal-banner seasonal-section" data-show="autumn" role="alert" aria-live="polite">
+    🍂 Herbstsaison! Chrysanthemen, Ziergräser, Kürbisse &amp; Herbstdeko jetzt vorrätig –
+    <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" style="color:inherit;font-weight:700;">Mehr entdecken&nbsp;→</a>
+  </div>
+  <div class="seasonal-banner seasonal-section" data-show="winter" role="alert" aria-live="polite">
+    ❄️ Winterzauber! Adventskränze, Weihnachtssterne &amp; festliche Deko im Sortiment –
+    <a href="<?= htmlspecialchars(site_url('?page=sortiment'), ENT_QUOTES, 'UTF-8') ?>" style="color:inherit;font-weight:700;">Zur Weihnachtswelt&nbsp;→</a>
+  </div>
+
+  <!-- =============================================
        SECTION 1: HERO
        ============================================= -->
   <section class="hero" aria-label="Willkommen"
        style="background-image: url('<?= htmlspecialchars($heroImagePath, ENT_QUOTES, 'UTF-8') ?>');">
+    <!-- Seasonal accent overlay (subtle tint, does not replace brand overlay) -->
+    <div class="hero-seasonal-accent" aria-hidden="true"></div>
+    <!-- Seasonal colour strip at bottom of hero -->
+    <div class="hero-seasonal-strip" aria-hidden="true"></div>
     <div class="hero-content reveal">
       <span class="hero-eyebrow">Gartenfachgeschäft in Handewitt</span>
       <h1>Ihr Garten.<br>Unsere Leidenschaft.</h1>
@@ -193,13 +218,180 @@ include __DIR__ . '/partials/header.php';
   </section>
 
   <!-- =============================================
+       SECTION 3.5: SEASONAL TIP SECTIONS
+       (only the section for the active season is shown)
+       ============================================= -->
+
+  <!-- Spring tips -->
+  <section class="seasonal-content-section seasonal-section" data-show="spring"
+           aria-label="Frühlingstipps für Ihren Garten">
+    <div class="container">
+      <div class="section-header">
+        <div class="seasonal-section-eyebrow reveal">🌸 Frühling</div>
+        <h2 class="seasonal-section-title reveal">Ihr Garten erwacht</h2>
+        <p class="seasonal-section-subtitle reveal" style="margin-inline:auto;">
+          März bis Mai – die schönste Zeit, Ihren Garten neu zu gestalten. Wir begleiten Sie dabei.
+        </p>
+      </div>
+      <div class="seasonal-tip-grid">
+        <div class="seasonal-tip-card reveal">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🌱</span>
+          <h3>Stauden &amp; Gehölze pflanzen</h3>
+          <p>Jetzt ist die beste Zeit für Stauden, Rosen und Kletterpflanzen.
+             Wir beraten Sie gerne über die passenden Sorten für Ihren Standort.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-1">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🪴</span>
+          <h3>Balkon &amp; Terrasse bepflanzen</h3>
+          <p>Geranien, Petunien, Fuchsien – frühlingsfrische Farbe für Balkonkästen
+             und Terrassenkübel. Große Auswahl ab März im Sortiment.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-2">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🌿</span>
+          <h3>Boden vorbereiten</h3>
+          <p>Beete lockern, Kompost einarbeiten, Mulch auffrischen –
+             so legen Sie den Grundstein für eine reiche Blüte und Ernte.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-xl);">
+        <a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>"
+           class="btn btn-primary">Zur Pflanzberatung</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summer tips -->
+  <section class="seasonal-content-section seasonal-section" data-show="summer"
+           aria-label="Sommertipps für Ihren Garten">
+    <div class="container">
+      <div class="section-header">
+        <div class="seasonal-section-eyebrow reveal">☀️ Sommer</div>
+        <h2 class="seasonal-section-title reveal">Sommerblüte &amp; Ernte</h2>
+        <p class="seasonal-section-subtitle reveal" style="margin-inline:auto;">
+          Juni bis August – genießen Sie Ihren Garten in voller Pracht. Wir haben alles dafür.
+        </p>
+      </div>
+      <div class="seasonal-tip-grid">
+        <div class="seasonal-tip-card reveal">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">💧</span>
+          <h3>Richtig gießen</h3>
+          <p>Früh morgens gießen, Staunässe vermeiden, Töpfe und Kübel täglich prüfen.
+             Unser Team berät Sie gerne zur optimalen Bewässerung.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-1">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🌿</span>
+          <h3>Kräutergarten anlegen</h3>
+          <p>Basilikum, Minze, Lavendel &amp; Co. – frische Kräuter aus dem eigenen Garten
+             für Küche und Wohlbefinden. Jetzt im Angebot.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-2">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🌻</span>
+          <h3>Balkon in voller Blüte</h3>
+          <p>Kübelpflanzen düngen, verblühte Triebe entfernen, Süßkartoffeln und
+             Sommerblüher für tropische Balkonoptik nutzen.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-xl);">
+        <a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>"
+           class="btn btn-primary">Pflegetipps &amp; Beratung</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Autumn tips -->
+  <section class="seasonal-content-section seasonal-section" data-show="autumn"
+           aria-label="Herbsttipps für Ihren Garten">
+    <div class="container">
+      <div class="section-header">
+        <div class="seasonal-section-eyebrow reveal">🍂 Herbst</div>
+        <h2 class="seasonal-section-title reveal">Goldener Herbst</h2>
+        <p class="seasonal-section-subtitle reveal" style="margin-inline:auto;">
+          September bis November – Ernte, Dekoration und Vorbereitung auf den Winter.
+        </p>
+      </div>
+      <div class="seasonal-tip-grid">
+        <div class="seasonal-tip-card reveal">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🌷</span>
+          <h3>Blumenzwiebeln pflanzen</h3>
+          <p>Jetzt Tulpen, Narzissen und Hyazinthen in die Erde – für eine
+             leuchtende Frühjahrsblüte. Große Auswahl bei uns im Sortiment.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-1">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🎃</span>
+          <h3>Herbstdeko &amp; Kürbisse</h3>
+          <p>Chrysanthemen, Kürbisse, Heidekraut und dekorative Gräser für
+             stimmungsvolle Herbstarrangements im Haus und Garten.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-2">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🍃</span>
+          <h3>Wintervorbereitung</h3>
+          <p>Empfindliche Pflanzen schützen, Beete abdecken, Kübelpflanzen
+             einräumen. Unser Team hilft Ihnen mit dem richtigen Winterschutz.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-xl);">
+        <a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>"
+           class="btn btn-primary">Saisonale Aufgaben</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Winter tips -->
+  <section class="seasonal-content-section seasonal-section" data-show="winter"
+           aria-label="Wintertipps für Ihren Garten">
+    <div class="container">
+      <div class="section-header">
+        <div class="seasonal-section-eyebrow reveal">❄️ Winter</div>
+        <h2 class="seasonal-section-title reveal">Winterzauber &amp; Pflege</h2>
+        <p class="seasonal-section-subtitle reveal" style="margin-inline:auto;">
+          Dezember bis Februar – festliche Dekoration, Zimmerpflanzenpflege und Frühjahrsplanung.
+        </p>
+      </div>
+      <div class="seasonal-tip-grid">
+        <div class="seasonal-tip-card reveal">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🕯️</span>
+          <h3>Adventsdeko &amp; Gestecke</h3>
+          <p>Adventskränze, Weihnachtssterne, Tannenzweig-Arrangements –
+             unsere Floristinnen gestalten auf Wunsch individuelle Dekoration für Sie.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-1">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">🪴</span>
+          <h3>Zimmerpflanzen pflegen</h3>
+          <p>Im Winter weniger gießen, hellen Standort wählen, keine Zugluft.
+             Wir beraten Sie, welche Pflanzen das Raumklima im Winter verbessern.</p>
+        </div>
+        <div class="seasonal-tip-card reveal reveal-delay-2">
+          <span class="seasonal-tip-card-icon" aria-hidden="true">📋</span>
+          <h3>Frühjahr vorplanen</h3>
+          <p>Jetzt Blumenzwiebeln bestellen, Saatgut aussuchen und den Gartenplan
+             für das neue Jahr machen. Kommen Sie vorbei – wir helfen gerne.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-xl);">
+        <a href="<?= htmlspecialchars(site_url('?page=beratung'), ENT_QUOTES, 'UTF-8') ?>"
+           class="btn btn-primary">Beratung &amp; Service</a>
+      </div>
+    </div>
+  </section>
+
+<?php
+// Server-side season label for static rendering (e.g., search-engine crawlers).
+// Client-side JS may override this label after the season switcher initialises.
+// Month ranges match detectSeasonByDate() in season.js and the head.php inline script.
+$month = (int) date('n');
+if ($month >= 3 && $month <= 5)       { $seasonLabel = 'Frühling ' . date('Y'); }
+elseif ($month >= 6 && $month <= 8)   { $seasonLabel = 'Sommer '   . date('Y'); }
+elseif ($month >= 9 && $month <= 11)  { $seasonLabel = 'Herbst '   . date('Y'); }
+else                                  { $seasonLabel = 'Winter '   . date('Y'); }
+?>
+  <!-- =============================================
        SECTION 4: INSPIRATION TEASER
        ============================================= -->
   <section class="inspiration-teaser" aria-label="Gartenideen und Inspiration">
     <div class="container">
       <div class="inspiration-inner">
         <div class="inspiration-text reveal">
-          <span class="eyebrow">Frühjahr 2026</span>
+          <span class="eyebrow"><?= htmlspecialchars($seasonLabel, ENT_QUOTES, 'UTF-8') ?></span>
           <h2>Lass dich für dein grünes Zuhause inspirieren</h2>
           <p>
             Ob Balkonkasten, Staudenbeet oder Wohnzimmerdschungel – wir zeigen Ihnen,

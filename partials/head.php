@@ -3,8 +3,10 @@
 $pageTitle       = $pageTitle       ?? 'Garten2000+mehr – Ihr Gartencenter in Handewitt';
 $pageDescription = $pageDescription ?? 'Pflanzen, Blumen, Floristik und Dekoration im Gartenfachgeschäft Garten2000+mehr in Handewitt.';
 $canonicalPath   = $canonicalPath   ?? '/';
-$styleCssVersion = (string) (@filemtime(__DIR__ . '/../assets/css/style.css') ?: time());
-$mainJsVersion   = (string) (@filemtime(__DIR__ . '/../assets/js/main.js') ?: time());
+$styleCssVersion    = (string) (@filemtime(__DIR__ . '/../assets/css/style.css')    ?: time());
+$seasonCssVersion   = (string) (@filemtime(__DIR__ . '/../assets/css/seasonal.css')  ?: time());
+$mainJsVersion      = (string) (@filemtime(__DIR__ . '/../assets/js/main.js')        ?: time());
+$seasonJsVersion    = (string) (@filemtime(__DIR__ . '/../assets/js/season.js')      ?: time());
 
 $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
 $basePath = rtrim(dirname($scriptName), '/.');
@@ -54,8 +56,17 @@ $canonicalHref = preg_match('#^https?://#i', $canonicalPath)
   <link rel="canonical" href="<?= htmlspecialchars($canonicalHref, ENT_QUOTES, 'UTF-8') ?>">
   <!-- Favicon -->
   <link rel="icon" href="<?= htmlspecialchars(asset_url('img/favicon.svg'), ENT_QUOTES, 'UTF-8') ?>" type="image/svg+xml">
-  <!-- Stylesheet -->
+  <!--
+    Season bootstrap: sets data-season on <html> before CSS is painted so there
+    is no flash of wrong seasonal styles. Mirrors detectSeasonByDate() in season.js.
+    Month ranges: spring=3-5, summer=6-8, autumn=9-11, winter=12-2
+  -->
+  <script>(function(){try{var s=localStorage.getItem('g2k_season');if(s&&/^(spring|summer|autumn|winter)$/.test(s)){document.documentElement.setAttribute('data-season',s);return;}}catch(e){}var m=new Date().getMonth()+1;document.documentElement.setAttribute('data-season',m>=3&&m<=5?'spring':m>=6&&m<=8?'summer':m>=9&&m<=11?'autumn':'winter');}());</script>
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="<?= htmlspecialchars(asset_url('css/style.css'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($styleCssVersion) ?>">
+  <link rel="stylesheet" href="<?= htmlspecialchars(asset_url('css/seasonal.css'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($seasonCssVersion) ?>">
+  <!-- Season script (deferred – no render block) -->
+  <script defer src="<?= htmlspecialchars(asset_url('js/season.js'), ENT_QUOTES, 'UTF-8') ?>?v=<?= rawurlencode($seasonJsVersion) ?>"></script>
   <!-- Google Fonts: Lora (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

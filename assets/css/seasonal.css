@@ -1,0 +1,715 @@
+/* ============================================================
+   Garten2000+mehr – Seasonal Design System
+   ============================================================
+   IMPORTANT: Brand colors in header / nav / footer / primary
+   buttons are NEVER modified here. Seasonal variables are used
+   exclusively in: seasonal sections, hero accents, seasonal
+   cards, banners and particle effects.
+   ============================================================ */
+
+/* ============================================================
+   SEASON CUSTOM PROPERTIES
+   Default values equal neutral spring-green (harmless fallback)
+   ============================================================ */
+:root {
+  --season-accent-color:     #4a9c4f;
+  --season-accent-light:     #e8f5e9;
+  --season-accent-mid:       #c8e6c9;
+  --season-text-on-accent:   #1b5e20;
+  --season-gradient:         linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  --season-hero-overlay:     rgba(15, 27, 22, 0.00);
+  --season-hero-strip:       #4a9c4f;
+  --season-particle-color:   rgba(74, 156, 79, 0.60);
+  --season-badge-bg:         rgba(74, 156, 79, 0.10);
+  --season-badge-text:       #1b5e20;
+  --season-badge-border:     rgba(74, 156, 79, 0.30);
+}
+
+/* ---- Spring ---- */
+html[data-season="spring"] {
+  --season-accent-color:     #d81b60;
+  --season-accent-light:     #fce4ec;
+  --season-accent-mid:       #f48fb1;
+  --season-text-on-accent:   #880e4f;
+  --season-gradient:         linear-gradient(135deg, #f3e5f5 0%, #e8f5e9 50%, #fce4ec 100%);
+  --season-hero-overlay:     rgba(216, 27, 96, 0.06);
+  --season-hero-strip:       #e91e8c;
+  --season-particle-color:   rgba(244, 143, 177, 0.75);
+  --season-badge-bg:         rgba(216, 27, 96, 0.08);
+  --season-badge-text:       #880e4f;
+  --season-badge-border:     rgba(216, 27, 96, 0.25);
+}
+
+/* ---- Summer ---- */
+html[data-season="summer"] {
+  --season-accent-color:     #e65100;
+  --season-accent-light:     #fff8e1;
+  --season-accent-mid:       #ffe082;
+  --season-text-on-accent:   #bf360c;
+  --season-gradient:         linear-gradient(135deg, #fff8e1 0%, #fff3e0 50%, #ffe0b2 100%);
+  --season-hero-overlay:     rgba(230, 81, 0, 0.05);
+  --season-hero-strip:       #f57c00;
+  --season-particle-color:   rgba(255, 212, 0, 0.65);
+  --season-badge-bg:         rgba(230, 81, 0, 0.08);
+  --season-badge-text:       #bf360c;
+  --season-badge-border:     rgba(230, 81, 0, 0.25);
+}
+
+/* ---- Autumn ---- */
+html[data-season="autumn"] {
+  --season-accent-color:     #bf360c;
+  --season-accent-light:     #fbe9e7;
+  --season-accent-mid:       #ffab91;
+  --season-text-on-accent:   #7f2901;
+  --season-gradient:         linear-gradient(135deg, #fff3e0 0%, #fbe9e7 50%, #ffe0b2 100%);
+  --season-hero-overlay:     rgba(191, 54, 12, 0.06);
+  --season-hero-strip:       #d84315;
+  --season-particle-color:   rgba(230, 81, 0, 0.60);
+  --season-badge-bg:         rgba(191, 54, 12, 0.08);
+  --season-badge-text:       #7f2901;
+  --season-badge-border:     rgba(191, 54, 12, 0.25);
+}
+
+/* ---- Winter ---- */
+html[data-season="winter"] {
+  --season-accent-color:     #1565c0;
+  --season-accent-light:     #e3f2fd;
+  --season-accent-mid:       #90caf9;
+  --season-text-on-accent:   #0d47a1;
+  --season-gradient:         linear-gradient(135deg, #e3f2fd 0%, #e8eaf6 50%, #ede7f6 100%);
+  --season-hero-overlay:     rgba(21, 101, 192, 0.06);
+  --season-hero-strip:       #42a5f5;
+  --season-particle-color:   rgba(227, 242, 253, 0.90);
+  --season-badge-bg:         rgba(21, 101, 192, 0.08);
+  --season-badge-text:       #0d47a1;
+  --season-badge-border:     rgba(21, 101, 192, 0.25);
+}
+
+/* ============================================================
+   HERO SEASONAL ACCENT
+   A subtle translucent overlay that tints the hero without
+   replacing the existing dark corporate gradient.
+   ============================================================ */
+.hero-seasonal-accent {
+  position: absolute;
+  inset: 0;
+  background: var(--season-hero-overlay);
+  z-index: 1; /* sits above ::before brand overlay */
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+/* Thin decorative strip at bottom of hero */
+.hero-seasonal-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--season-hero-strip);
+  opacity: 0.55;
+  z-index: 3;
+  transition: background 0.5s ease;
+}
+
+/* ============================================================
+   SEASONAL SECTION VISIBILITY
+   Only the section matching the current season is displayed.
+   ============================================================ */
+.seasonal-section {
+  display: none;
+}
+
+html[data-season="spring"] .seasonal-section[data-show="spring"],
+html[data-season="summer"] .seasonal-section[data-show="summer"],
+html[data-season="autumn"] .seasonal-section[data-show="autumn"],
+html[data-season="winter"] .seasonal-section[data-show="winter"] {
+  display: block;
+}
+
+/* ============================================================
+   SEASONAL ANNOUNCEMENT BANNER
+   Narrow strip between header and hero for seasonal news.
+   ============================================================ */
+.seasonal-banner {
+  display: none;
+  padding: 0.55rem var(--container-padding);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--season-text-on-accent);
+  background-color: var(--season-accent-light);
+  border-bottom: 1px solid var(--season-accent-mid);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1.5;
+}
+
+html[data-season="spring"] .seasonal-banner[data-show="spring"],
+html[data-season="summer"] .seasonal-banner[data-show="summer"],
+html[data-season="autumn"] .seasonal-banner[data-show="autumn"],
+html[data-season="winter"] .seasonal-banner[data-show="winter"] {
+  display: block;
+}
+
+/* ============================================================
+   SEASONAL CONTENT SECTION
+   Full section with gradient background for seasonal tips.
+   ============================================================ */
+.seasonal-content-section {
+  padding-block: var(--space-3xl);
+  background: var(--season-gradient);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.6s ease;
+}
+
+/* Decorative blurred blob */
+.seasonal-content-section::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 50%;
+  height: 140%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.seasonal-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--season-badge-bg);
+  color: var(--season-badge-text);
+  border: 1px solid var(--season-badge-border);
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.seasonal-section-title {
+  font-size: var(--font-size-2xl);
+  color: var(--season-text-on-accent);
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+
+.seasonal-section-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--season-text-on-accent);
+  opacity: 0.75;
+  margin-bottom: var(--space-2xl);
+  max-width: 600px;
+}
+
+/* ============================================================
+   SEASONAL TIP CARDS
+   ============================================================ */
+.seasonal-tip-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .seasonal-tip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .seasonal-tip-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.seasonal-tip-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.seasonal-tip-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.seasonal-tip-card-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.seasonal-tip-card h3 {
+  color: var(--season-text-on-accent);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.seasonal-tip-card p {
+  color: var(--season-text-on-accent);
+  opacity: 0.82;
+  font-size: var(--font-size-base);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ============================================================
+   SEASON SWITCHER WIDGET
+   Fixed floating control – does not affect brand header.
+   ============================================================ */
+.season-switcher {
+  position: fixed;
+  bottom: var(--space-xl);
+  left: var(--space-xl);
+  z-index: 450; /* above header (100), below toasts (9999) */
+  font-family: var(--font-base);
+}
+
+.season-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(15, 27, 22, 0.88);
+  color: var(--text-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem 0.45rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background var(--transition), border-color var(--transition);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.season-switcher-btn:hover {
+  background: rgba(31, 107, 58, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.season-switcher-caret {
+  font-size: 0.65em;
+  opacity: 0.6;
+  margin-left: 0.15rem;
+  transition: transform var(--transition);
+}
+
+.season-switcher.is-open .season-switcher-caret {
+  transform: rotate(180deg);
+}
+
+.season-switcher-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  min-width: 185px;
+  background: rgba(10, 20, 14, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.season-switcher.is-open .season-switcher-dropdown {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.season-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  color: rgba(247, 244, 238, 0.78);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-base);
+  transition: background var(--transition), color var(--transition);
+}
+
+.season-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.season-option.is-active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.season-option-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   PARTICLE CANVAS
+   ============================================================ */
+#seasonal-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2; /* well below header (100) and all interactive elements */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#seasonal-canvas.is-active {
+  opacity: 1;
+}
+
+/* ============================================================
+   BERATUNG – ADVISORY SECTIONS
+   ============================================================ */
+
+/* Standort advisor (sun/shade) */
+.standort-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .standort-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.standort-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.standort-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.standort-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  line-height: 1;
+}
+
+.standort-card h3 {
+  font-size: var(--font-size-lg);
+  color: var(--primary);
+  margin-bottom: var(--space-sm);
+}
+
+.standort-card p {
+  font-size: var(--font-size-base);
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  line-height: 1.65;
+}
+
+.standort-plant-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.standort-plant-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.standort-plant-list li::before {
+  content: '✿';
+  color: var(--primary);
+  font-size: 0.75em;
+  flex-shrink: 0;
+}
+
+/* Garden type cards */
+.gartentyp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .gartentyp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gartentyp-card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.gartentyp-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.gartentyp-img {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  background: var(--soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.gartentyp-body {
+  padding: var(--space-xl);
+}
+
+.gartentyp-body h3 {
+  color: var(--primary);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.gartentyp-body p {
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.gartentyp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gartentyp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--soft);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(31, 107, 58, 0.2);
+}
+
+/* Pflanzenkunde (bienenfreundlich, winterhart, pflegeleicht) */
+.pflanzenkunde-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 640px) {
+  .pflanzenkunde-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pflanzenkunde-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pflanzenkunde-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border-top: 4px solid var(--primary);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.pflanzenkunde-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.pflanzenkunde-card-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.pflanzenkunde-card h3 {
+  color: var(--primary);
+  font-size: var(--font-size-lg);
+}
+
+.pflanzenkunde-card p {
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+.pflanzenkunde-card .example-plants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: var(--space-sm);
+}
+
+.plant-chip {
+  background: var(--soft);
+  color: var(--ink);
+  border-radius: var(--radius-full);
+  padding: 0.15rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Seasonal tasks accordion */
+.saisonale-aufgaben {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .saisonale-aufgaben {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.aufgaben-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow var(--transition);
+}
+
+.aufgaben-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.aufgaben-card-header {
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.aufgaben-card-header.spring { background: #fce4ec; color: #880e4f; }
+.aufgaben-card-header.summer { background: #fff8e1; color: #bf360c; }
+.aufgaben-card-header.autumn { background: #fbe9e7; color: #7f2901; }
+.aufgaben-card-header.winter { background: #e3f2fd; color: #0d47a1; }
+
+.aufgaben-card-body {
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.aufgaben-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.aufgaben-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--font-size-base);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.aufgaben-list li::before {
+  content: '✓';
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85em;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+/* ============================================================
+   ACCESSIBILITY – REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  #seasonal-canvas {
+    display: none !important;
+  }
+
+  .hero-seasonal-accent,
+  .seasonal-banner,
+  .seasonal-section-eyebrow,
+  .season-switcher-dropdown {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   MOBILE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 480px) {
+  .season-switcher {
+    bottom: var(--space-lg);
+    left: var(--space-md);
+  }
+
+  .season-switcher-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+  }
+}
