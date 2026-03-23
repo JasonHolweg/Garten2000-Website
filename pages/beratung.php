@@ -97,6 +97,310 @@ $faqs = [
     </div><!-- /.container -->
   </section>
 
+  <!-- ============================================================
+       STANDORT-RATGEBER: Sonne / Halbschatten / Schatten
+       ============================================================ -->
+  <section class="section section-soft" aria-label="Standort-Ratgeber">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Standort-Ratgeber</h2>
+        <p class="section-subtitle reveal">
+          Welche Pflanze passt wohin? Die Lichtverhältnisse im Garten entscheiden über Erfolg oder Misserfolg.
+        </p>
+      </div>
+      <div class="standort-grid">
+
+        <div class="standort-card reveal">
+          <span class="standort-icon" aria-hidden="true">☀️</span>
+          <h3>Volle Sonne</h3>
+          <p>Mindestens 6 Stunden direkte Sonneneinstrahlung täglich. Ideal für Mittelmeer-Pflanzen,
+             Rosen, Lavendel und viele Gemüsesorten.</p>
+          <ul class="standort-plant-list" aria-label="Pflanzen für volle Sonne">
+            <li>Lavendel, Rosmarin, Salbei</li>
+            <li>Rosen, Sonnenhut (Echinacea)</li>
+            <li>Tomaten, Paprika, Zucchini</li>
+            <li>Bougainvillea, Oleander</li>
+            <li>Phlox, Cosmea, Tagetes</li>
+          </ul>
+        </div>
+
+        <div class="standort-card reveal reveal-delay-1">
+          <span class="standort-icon" aria-hidden="true">🌤️</span>
+          <h3>Halbschatten</h3>
+          <p>2–6 Stunden Sonne täglich. Ein breites Spektrum an Pflanzen gedeiht hier prächtig –
+             der ideale Kompromiss für gemischte Beete.</p>
+          <ul class="standort-plant-list" aria-label="Pflanzen für Halbschatten">
+            <li>Hortensien, Fuchsien</li>
+            <li>Funkie (Hosta), Astilbe</li>
+            <li>Farn, Impatiens (Fleißiges Lieschen)</li>
+            <li>Kletterrosen (einige Sorten)</li>
+            <li>Salat, Spinat, Mangold</li>
+          </ul>
+        </div>
+
+        <div class="standort-card reveal reveal-delay-2">
+          <span class="standort-icon" aria-hidden="true">🌑</span>
+          <h3>Schatten</h3>
+          <p>Weniger als 2 Stunden direkte Sonne. Manche Pflanzen lieben genau das –
+             wir zeigen Ihnen, wie ein Schattengarten wunderschön werden kann.</p>
+          <ul class="standort-plant-list" aria-label="Pflanzen für Schatten">
+            <li>Funkie (Hosta), Elfenblume</li>
+            <li>Waldmeister, Bärlauch</li>
+            <li>Rhododendron, Aucuba</li>
+            <li>Maiglöckchen, Buschwindröschen</li>
+            <li>Efeu, Kletterpflanze für Schatten</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GARTENTYPEN: Balkon / Beet / Hochbeet / Rasen
+       ============================================================ -->
+  <section class="section" aria-label="Gartentypen-Ratgeber">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Für jeden Gartentyp das Richtige</h2>
+        <p class="section-subtitle reveal">
+          Ob kleiner Balkon oder großes Beet – wir begleiten Sie bei der Gestaltung.
+        </p>
+      </div>
+      <div class="gartentyp-grid">
+
+        <div class="gartentyp-card reveal">
+          <div class="gartentyp-img" aria-hidden="true">🪴</div>
+          <div class="gartentyp-body">
+            <h3>Balkon &amp; Terrasse</h3>
+            <p>
+              Auch auf kleinstem Raum lässt sich ein Pflanzparadies schaffen. Mit dem richtigen
+              Substrat, passenden Kübeln und einer Auswahl an kompakten Pflanzen wird Ihr Balkon
+              zur Oase. Wir helfen bei der Planung und liefern alle Pflanzen aus einer Hand.
+            </p>
+            <div class="gartentyp-tags">
+              <span class="gartentyp-tag">🌺 Geranien</span>
+              <span class="gartentyp-tag">🌿 Kräuter</span>
+              <span class="gartentyp-tag">🍃 Clematis</span>
+              <span class="gartentyp-tag">🌻 Petunien</span>
+              <span class="gartentyp-tag">🍅 Tomaten</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gartentyp-card reveal reveal-delay-1">
+          <div class="gartentyp-img" aria-hidden="true">🌼</div>
+          <div class="gartentyp-body">
+            <h3>Blumen- &amp; Staudenbeet</h3>
+            <p>
+              Ein gut geplantes Staudenbeet blüht von März bis November und kommt jedes Jahr
+              schöner wieder. Wir zeigen Ihnen, wie Sie Höhe, Farbe und Blütezeit optimal
+              kombinieren – für ein Beet, das sich fast von selbst pflegt.
+            </p>
+            <div class="gartentyp-tags">
+              <span class="gartentyp-tag">🌷 Stauden</span>
+              <span class="gartentyp-tag">🌸 Rosen</span>
+              <span class="gartentyp-tag">💜 Lavendel</span>
+              <span class="gartentyp-tag">🌼 Sonnenhut</span>
+              <span class="gartentyp-tag">🌿 Gräser</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gartentyp-card reveal">
+          <div class="gartentyp-img" aria-hidden="true">🥕</div>
+          <div class="gartentyp-body">
+            <h3>Hochbeet</h3>
+            <p>
+              Das Hochbeet liegt im Trend – und das aus gutem Grund: Es ermöglicht rückenfreundliches
+              Gärtnern, heizt sich schneller auf und bietet optimale Bedingungen für Gemüse, Kräuter
+              und Salate. Unser Team berät Sie beim Aufbau und der Bepflanzung.
+            </p>
+            <div class="gartentyp-tags">
+              <span class="gartentyp-tag">🥬 Salat</span>
+              <span class="gartentyp-tag">🌿 Kräuter</span>
+              <span class="gartentyp-tag">🍓 Erdbeeren</span>
+              <span class="gartentyp-tag">🥦 Gemüse</span>
+              <span class="gartentyp-tag">🌱 Anzucht</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gartentyp-card reveal reveal-delay-1">
+          <div class="gartentyp-img" aria-hidden="true">🌱</div>
+          <div class="gartentyp-body">
+            <h3>Rasen</h3>
+            <p>
+              Ein schöner Rasen ist Ergebnis regelmäßiger Pflege: Mähen, Düngen, Lüften und
+              Nachsäen. Wir führen Rasensamen, Rasendünger und Vertikutier-Saatgut –
+              und geben Ihnen den passenden Pflegeplan für das ganze Jahr mit.
+            </p>
+            <div class="gartentyp-tags">
+              <span class="gartentyp-tag">✂️ Rasensamen</span>
+              <span class="gartentyp-tag">💧 Bewässerung</span>
+              <span class="gartentyp-tag">🌿 Dünger</span>
+              <span class="gartentyp-tag">🛠️ Pflege</span>
+              <span class="gartentyp-tag">🌱 Nachsaat</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PFLANZENKUNDE: bienenfreundlich / winterhart / pflegeleicht
+       ============================================================ -->
+  <section class="section section-soft" aria-label="Pflanzenkunde">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Pflanzenkunde auf einen Blick</h2>
+        <p class="section-subtitle reveal">
+          Welche Eigenschaften braucht Ihre Wunschpflanze? Wir helfen Ihnen bei der Auswahl.
+        </p>
+      </div>
+      <div class="pflanzenkunde-grid">
+
+        <div class="pflanzenkunde-card reveal">
+          <span class="pflanzenkunde-card-icon" aria-hidden="true">🐝</span>
+          <h3>Bienenfreundlich</h3>
+          <p>
+            Heimische Insekten brauchen unsere Hilfe. Mit blütenreichen, bienenfreundlichen
+            Pflanzen leisten Sie einen wertvollen Beitrag zur Artenvielfalt – und Ihr Garten
+            wird bunter und lebendiger.
+          </p>
+          <div class="example-plants">
+            <span class="plant-chip">Lavendel</span>
+            <span class="plant-chip">Phacelia</span>
+            <span class="plant-chip">Sonnenhut</span>
+            <span class="plant-chip">Borretsch</span>
+            <span class="plant-chip">Thymian</span>
+            <span class="plant-chip">Wildblumen</span>
+          </div>
+        </div>
+
+        <div class="pflanzenkunde-card reveal reveal-delay-1">
+          <span class="pflanzenkunde-card-icon" aria-hidden="true">❄️</span>
+          <h3>Winterhart</h3>
+          <p>
+            Winterharte Pflanzen trotzen Frost und kehren jedes Jahr wieder – sie sind die
+            Investition, die sich lohnt. Fragen Sie uns nach Sorten, die in Schleswig-Holstein
+            zuverlässig überwintern.
+          </p>
+          <div class="example-plants">
+            <span class="plant-chip">Funkie</span>
+            <span class="plant-chip">Iris</span>
+            <span class="plant-chip">Stauden-Rosen</span>
+            <span class="plant-chip">Eibe</span>
+            <span class="plant-chip">Kiefer</span>
+            <span class="plant-chip">Bergenie</span>
+          </div>
+        </div>
+
+        <div class="pflanzenkunde-card reveal reveal-delay-2">
+          <span class="pflanzenkunde-card-icon" aria-hidden="true">😌</span>
+          <h3>Pflegeleicht</h3>
+          <p>
+            Nicht jeder hat Zeit für tägliche Gartenarbeit. Pflegeleichte Pflanzen brauchen
+            wenig Aufmerksamkeit, sehen aber toll aus. Ideal für Berufstätige, Reisende
+            und Garten-Einsteiger.
+          </p>
+          <div class="example-plants">
+            <span class="plant-chip">Sedum</span>
+            <span class="plant-chip">Agapanthus</span>
+            <span class="plant-chip">Sukkulenten</span>
+            <span class="plant-chip">Gräser</span>
+            <span class="plant-chip">Hortensie</span>
+            <span class="plant-chip">Kirschlorbeer</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SAISONALE AUFGABEN: Aufgaben nach Jahreszeit
+       ============================================================ -->
+  <section class="section" aria-label="Saisonale Gartenaufgaben">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Saisonale Aufgaben im Garten</h2>
+        <p class="section-subtitle reveal">
+          Was steht wann an? Eine kompakte Übersicht für das ganze Gartenjahr.
+        </p>
+      </div>
+      <div class="saisonale-aufgaben">
+
+        <div class="aufgaben-card reveal">
+          <div class="aufgaben-card-header spring">
+            <span aria-hidden="true">🌸</span> Frühling (März–Mai)
+          </div>
+          <div class="aufgaben-card-body">
+            <ul class="aufgaben-list">
+              <li>Beete aufräumen, Unkraut entfernen und Boden lockern</li>
+              <li>Stauden, Rosen und Klettergewächse pflanzen</li>
+              <li>Blumenzwiebeln der Vorjahre pflegen und düngen</li>
+              <li>Sommerpflanzen vorziehen (ab März im Haus)</li>
+              <li>Rasen vertikutieren und nachsäen</li>
+              <li>Balkonkästen und Kübel neu bepflanzen (nach Frostende)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aufgaben-card reveal reveal-delay-1">
+          <div class="aufgaben-card-header summer">
+            <span aria-hidden="true">☀️</span> Sommer (Juni–August)
+          </div>
+          <div class="aufgaben-card-body">
+            <ul class="aufgaben-list">
+              <li>Regelmäßig gießen – am besten früh morgens</li>
+              <li>Kübel und Töpfe täglich kontrollieren (trocknet schnell aus)</li>
+              <li>Verblühtes abschneiden für neue Blüten (Deadheading)</li>
+              <li>Kräuter ernten und Gemüse regelmäßig pflücken</li>
+              <li>Rasen nicht zu kurz mähen (Trockenstress vermeiden)</li>
+              <li>Schädlinge beobachten und frühzeitig reagieren</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aufgaben-card reveal">
+          <div class="aufgaben-card-header autumn">
+            <span aria-hidden="true">🍂</span> Herbst (September–November)
+          </div>
+          <div class="aufgaben-card-body">
+            <ul class="aufgaben-list">
+              <li>Blumenzwiebeln für Frühjahrsblüte pflanzen (Tulpen, Narzissen)</li>
+              <li>Frostempfindliche Pflanzen einräumen oder abdecken</li>
+              <li>Beetpflanzen entfernen und Kompost anlegen</li>
+              <li>Rasendünger ausbringen (Herbstdünger für starke Wurzeln)</li>
+              <li>Kübelpflanzen winterfest machen</li>
+              <li>Gartengeräte reinigen und einlagern</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aufgaben-card reveal reveal-delay-1">
+          <div class="aufgaben-card-header winter">
+            <span aria-hidden="true">❄️</span> Winter (Dezember–Februar)
+          </div>
+          <div class="aufgaben-card-body">
+            <ul class="aufgaben-list">
+              <li>Zimmerpflanzen gießen – aber weniger als sonst</li>
+              <li>Gehölze und Sträucher bei Frost nicht zurückschneiden</li>
+              <li>Vogelfütterung: Fettfutter und Körner anbieten</li>
+              <li>Gartenplan für die neue Saison erstellen</li>
+              <li>Saatkataloge lesen und Bestellungen aufgeben</li>
+              <li>Bei starkem Frost Rohre schützen und absperren</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Opening Hours in Context -->
   <section class="section" style="background-color:var(--soft);" aria-label="Wann können Sie uns besuchen">
     <div class="container">
